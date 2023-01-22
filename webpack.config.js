@@ -1,6 +1,4 @@
 const path = require("path");
-// eslint-disable-next-line import/no-extraneous-dependencies
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -8,16 +6,10 @@ module.exports = {
     index: "./src/index.js",
     retrieve: "./src/retrieve.js",
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Weather App",
-    }),
-  ],
   devtool: "inline-source-map",
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
-    clean: true,
   },
   module: {
     rules: [
