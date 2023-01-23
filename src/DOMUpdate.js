@@ -18,11 +18,11 @@ const EltCreator = (function EltCreator() {
     // state (if applicable) and country
     const cityLocation = document.createElement("div");
     cityLocation.classList.add("city-location");
-    
-    if(location.state){
-        cityLocation.textContent = `${location.state}, ${location.country}`;
-    }else{
-        cityLocation.textContent = location.country;
+
+    if (location.state) {
+      cityLocation.textContent = `${location.state}, ${location.country}`;
+    } else {
+      cityLocation.textContent = location.country;
     }
 
     const roundLat = location.lat.toFixed(4);
@@ -48,6 +48,7 @@ const EltCreator = (function EltCreator() {
   function createMenu(locations) {
     const locationList = document.createElement("ul");
     locationList.classList.add("location-list");
+    content.style.visibility = "visible";
 
     locations.forEach((location) => {
       console.log(location);
@@ -60,15 +61,61 @@ const EltCreator = (function EltCreator() {
     content.appendChild(locationList);
   }
 
-  function createWeatherDisp(weatherloc, searchLoc) {
+  function createWeatherDisp(weatherLoc, searchLoc) {
     content.textContent = "";
+    content.style.visibility = "visible";
 
-    const dataWrap = document.createElement("div");
-    const { temp } = weatherloc.main;
+    // information from the 'weather' section of the openweathermap data
+    const weather = weatherLoc.weather[0];
 
-    dataWrap.textContent = `The temperature in ${searchLoc.name} is ${temp} degrees.`;
+    // information from the 'main' section of the openweathermap data
+    const dataMain = weatherLoc.main;
 
-    content.appendChild(dataWrap);
+    const title = document.createElement("div");
+    title.classList.add("weather-title");
+
+    if (searchLoc.state) {
+      title.textContent = `${searchLoc.name}, ${searchLoc.state}, ${searchLoc.country}`;
+    } else {
+      title.textContent = `${searchLoc.name}, ${searchLoc.country}`;
+    }
+
+    const descWrap = document.createElement("div");
+    descWrap.classList.add("desc-wrap");
+
+    const icon = document.createElement("img");
+    icon.classList.add("weather-icon");
+    icon.src = `http://openweathermap.org/img/wn/${weather.icon}@2x.png`;
+
+    const descMain = document.createElement("p");
+    descMain.classList.add("desc-main");
+    descMain.textContent = weather.main;
+
+    const descDetail = document.createElement("p");
+    descDetail.classList.add("desc-detail");
+    descDetail.textContent = weather.description;
+
+    descWrap.appendChild(icon);
+    descWrap.appendChild(descMain);
+    descWrap.appendChild(descDetail);
+
+    const mainWrap = document.createElement("div");
+    mainWrap.classList.add("main-wrap");
+
+    const temp = document.createElement("p");
+    temp.classList.add("temp");
+    temp.textContent = `${dataMain.temp}°`;
+
+    const minTemp = document.createElement("p");
+    minTemp.classList.add("min-temp");
+    minTemp.textContent = `low: ${dataMain.temp_min}°`;
+
+    mainWrap.appendChild(temp);
+    mainWrap.appendChild(minTemp);
+
+    content.appendChild(title);
+    content.appendChild(descWrap);
+    content.appendChild(mainWrap);
   }
 
   return {

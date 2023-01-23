@@ -3,6 +3,11 @@ body {
   padding: 0;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .wrapper {
   width: 100%;
   height: 100vh;
@@ -13,6 +18,13 @@ body {
 }
 
 .content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  visibility: hidden;
   background-color: #fafaf9;
   border-radius: 10px;
   padding: 10px;
@@ -20,51 +32,83 @@ body {
 
 .location-list {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.location-container{
-    margin: 8px;
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
+.location-container {
+  margin: 8px;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.location-container:hover{
-    background-color: #dadad5aa;
+.location-container:hover {
+  background-color: #dadad5aa;
 }
 
-.city-name{
-    height: 100%;
-    grid-area: name;
-    font-size: 18px;
+.city-name {
+  height: 100%;
+  grid-area: name;
+  font-size: 18px;
 }
 
-.city-location{
-    align-self: end;
-    height: 100%;
-    grid-area: location;
-    font-size: 14px;
+.city-location {
+  align-self: end;
+  height: 100%;
+  grid-area: location;
+  font-size: 14px;
 }
 
-.city-lat{
-    grid-area: lat;
-    font-size: 14px;
-    align-self: end;
+.city-lat {
+  grid-area: lat;
+  font-size: 14px;
+  align-self: end;
 }
 
-.city-lon{
-    grid-area: lon;
-    font-size: 14px;
-    align-self: start;
+.city-lon {
+  grid-area: lon;
+  font-size: 14px;
+  align-self: start;
 }
 
-.location-container{
-    height: 36px;
-    display: grid;
-    justify-items: stretch;
-    gap: 4px;
-    grid-template: 
+.location-container {
+  height: 36px;
+  display: grid;
+  justify-items: stretch;
+  gap: 4px;
+  grid-template:
     "name . lat" 1fr
     "location . lon" 1fr / 1fr 1fr 1fr;
 }
 
+.weather-title {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.desc-wrap {
+  display: grid;
+  grid-template:
+    "icon main" 8fr
+    "icon detail" 7fr / 1fr 2fr;
+}
+
+.weather-icon {
+  grid-area: icon;
+  height: 75px;
+  width: 75px;
+  align-self: center;
+}
+
+.desc-main {
+  grid-area: main;
+  align-self: end;
+  font-size: 24px;
+}
+
+.desc-detail {
+  grid-area: detail;
+  align-self: start;
+  font-size: 14px;
+}
