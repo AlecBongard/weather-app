@@ -33,7 +33,6 @@ const Retrieval = (function Retrieval() {
     );
 
     const weatherData = await response.json();
-    console.log(weatherData);
 
     return weatherData;
   }
