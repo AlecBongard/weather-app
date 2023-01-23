@@ -11,13 +11,35 @@ const EltCreator = (function EltCreator() {
     itemContainer.classList.add("location-container");
     itemContainer.setAttribute("data-index", index);
 
-    if (location.state) {
-      itemContainer.textContent = `${location.name}, ${location.state}, ${location.country}`;
-    } else {
-      itemContainer.textContent = `${location.name}, ${location.country}`;
+    const cityName = document.createElement("div");
+    cityName.classList.add("city-name");
+    cityName.textContent = location.name;
+
+    // state (if applicable) and country
+    const cityLocation = document.createElement("div");
+    cityLocation.classList.add("city-location");
+    
+    if(location.state){
+        cityLocation.textContent = `${location.state}, ${location.country}`;
+    }else{
+        cityLocation.textContent = location.country;
     }
 
+    const roundLat = location.lat.toFixed(4);
+    const cityLat = document.createElement("div");
+    cityLat.classList.add("city-lat");
+    cityLat.textContent = `lat: ${roundLat}`;
+
+    const roundLon = location.lon.toFixed(2);
+    const cityLon = document.createElement("div");
+    cityLon.classList.add("city-lon");
+    cityLon.textContent = `lon: ${roundLon}`;
+
     listItem.appendChild(itemContainer);
+    itemContainer.appendChild(cityName);
+    itemContainer.appendChild(cityLat);
+    itemContainer.appendChild(cityLocation);
+    itemContainer.appendChild(cityLon);
 
     return listItem;
   }

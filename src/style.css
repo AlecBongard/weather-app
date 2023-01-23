@@ -14,8 +14,57 @@ body {
 
 .content-wrap {
   background-color: #fafaf9;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .location-list {
   list-style-type: none;
 }
+
+.location-container{
+    margin: 8px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.location-container:hover{
+    background-color: #dadad5aa;
+}
+
+.city-name{
+    height: 100%;
+    grid-area: name;
+    font-size: 18px;
+}
+
+.city-location{
+    align-self: end;
+    height: 100%;
+    grid-area: location;
+    font-size: 14px;
+}
+
+.city-lat{
+    grid-area: lat;
+    font-size: 14px;
+    align-self: end;
+}
+
+.city-lon{
+    grid-area: lon;
+    font-size: 14px;
+    align-self: start;
+}
+
+.location-container{
+    height: 36px;
+    display: grid;
+    justify-items: stretch;
+    gap: 4px;
+    grid-template: 
+    "name . lat" 1fr
+    "location . lon" 1fr / 1fr 1fr 1fr;
+}
+
