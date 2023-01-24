@@ -121,6 +121,25 @@ const EltCreator = (function EltCreator() {
     feelsLike.classList.add("feels-like");
     feelsLike.textContent = `Feels like: ${dataMain.feels_like}°F`;
 
+    const otherInfo = document.createElement("div");
+    otherInfo.classList.add("other-info");
+
+    const windSpeed = document.createElement("p");
+    windSpeed.classList.add("wind-speed");
+    windSpeed.textContent = `Wind Speed: ${weatherLoc.wind.speed} mph`;
+
+    const press = document.createElement("p");
+    press.classList.add("pressure");
+    press.textContent = `Pressure: ${dataMain.pressure} hPa`;
+
+    const humidity = document.createElement("p");
+    humidity.classList.add("humidity");
+    humidity.textContent = `Humidity: ${dataMain.humidity}%`;
+
+    otherInfo.appendChild(windSpeed);
+    otherInfo.appendChild(press);
+    otherInfo.appendChild(humidity);
+
     mainWrap.appendChild(minTemp);
     mainWrap.appendChild(maxTemp);
     mainWrap.appendChild(feelsLike);
@@ -130,6 +149,7 @@ const EltCreator = (function EltCreator() {
     weatherWrap.appendChild(temp);
     weatherWrap.appendChild(mainWrap);
     weatherWrap.appendChild(descWrap);
+    weatherWrap.appendChild(otherInfo);
   }
 
   return {
