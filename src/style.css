@@ -1,4 +1,12 @@
+@font-face {
+  font-family: Roboto;
+  src: url("./fonts/Roboto/Roboto-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
+  font-family: Roboto;
   margin: 0;
   padding: 0;
 }
@@ -88,6 +96,7 @@ p {
 }
 
 .desc-wrap {
+  width: min-content;
   display: grid;
   grid-template:
     "icon main" 8fr
