@@ -16,9 +16,13 @@ const Retrieval = (function Retrieval() {
       }
     );
 
-    const geoData = await response.json();
+    if (response.ok) {
+      const geoData = await response.json();
 
-    return geoData;
+      return geoData;
+    }
+
+    return "Please enter a valid search term";
   }
 
   // current weather documentation here: https://openweathermap.org/current

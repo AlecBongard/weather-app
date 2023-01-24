@@ -152,9 +152,15 @@ const EltCreator = (function EltCreator() {
     weatherWrap.appendChild(otherInfo);
   }
 
+  function displayError(errorText) {
+    content.textContent = errorText;
+    content.style.visibility = "visible";
+  }
+
   return {
     createMenu,
     createWeatherDisp,
+    displayError,
   };
 })();
 

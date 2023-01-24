@@ -155,3 +155,21 @@ p {
 .max-temp {
   grid-area: max;
 }
+
+.search-form {
+  display: flex;
+}
+
+#search {
+  padding: 15px;
+  width: 440px;
+  height: 32px;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#submit {
+  height: 32px;
+  width: 75px;
+  margin: 0;
+}
