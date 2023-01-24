@@ -68,6 +68,15 @@ p {
   font-size: 14px;
 }
 
+.weather-wrap {
+  display: grid;
+  justify-content: center;
+
+  grid-template:
+    "temp main-wrap" 1fr
+    "desc ." 1fr / 1fr 1fr;
+}
+
 .city-lat {
   grid-area: lat;
   font-size: 14px;
@@ -96,10 +105,10 @@ p {
 }
 
 .desc-wrap {
-  width: min-content;
+  grid-area: desc;
   display: grid;
   grid-template:
-    "icon main" 8fr
+    "icon main-weather" 8fr
     "icon detail" 7fr / 1fr 2fr;
 }
 
@@ -111,7 +120,7 @@ p {
 }
 
 .desc-main {
-  grid-area: main;
+  grid-area: main-weather;
   align-self: end;
   font-size: 24px;
 }
@@ -120,4 +129,29 @@ p {
   grid-area: detail;
   align-self: start;
   font-size: 14px;
+}
+
+.main-wrap {
+  grid-area: main-wrap;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.temp {
+  grid-area: temp;
+  font-size: 52px;
+  align-self: center;
+  justify-self: start;
+  padding-left: 25px;
+}
+
+.min-temp {
+  grid-area: min;
+}
+
+.max-temp {
+  grid-area: max;
 }

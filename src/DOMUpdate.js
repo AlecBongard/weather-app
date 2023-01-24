@@ -80,6 +80,9 @@ const EltCreator = (function EltCreator() {
       title.textContent = `${searchLoc.name}, ${searchLoc.country}`;
     }
 
+    const weatherWrap = document.createElement("div");
+    weatherWrap.classList.add("weather-wrap");
+
     const descWrap = document.createElement("div");
     descWrap.classList.add("desc-wrap");
 
@@ -104,18 +107,29 @@ const EltCreator = (function EltCreator() {
 
     const temp = document.createElement("p");
     temp.classList.add("temp");
-    temp.textContent = `${dataMain.temp}°`;
+    temp.textContent = `${dataMain.temp.toFixed(1)}°F`;
 
     const minTemp = document.createElement("p");
     minTemp.classList.add("min-temp");
-    minTemp.textContent = `low: ${dataMain.temp_min}°`;
+    minTemp.textContent = `Low: ${dataMain.temp_min.toFixed(1)}°F`;
 
-    mainWrap.appendChild(temp);
+    const maxTemp = document.createElement("p");
+    maxTemp.classList.add("max-temp");
+    maxTemp.textContent = `Max: ${dataMain.temp_max.toFixed(1)}°F`;
+
+    const feelsLike = document.createElement("p");
+    feelsLike.classList.add("feels-like");
+    feelsLike.textContent = `Feels like: ${dataMain.feels_like}°F`;
+
     mainWrap.appendChild(minTemp);
+    mainWrap.appendChild(maxTemp);
+    mainWrap.appendChild(feelsLike);
 
     content.appendChild(title);
-    content.appendChild(descWrap);
-    content.appendChild(mainWrap);
+    content.appendChild(weatherWrap);
+    weatherWrap.appendChild(temp);
+    weatherWrap.appendChild(mainWrap);
+    weatherWrap.appendChild(descWrap);
   }
 
   return {
