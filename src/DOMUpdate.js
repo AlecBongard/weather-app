@@ -51,7 +51,6 @@ const EltCreator = (function EltCreator() {
     content.style.visibility = "visible";
 
     locations.forEach((location) => {
-      console.log(location);
       const index = locations.indexOf(location);
 
       const locationItem = _makeOption(location, index);

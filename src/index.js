@@ -29,7 +29,6 @@ submitBtn.addEventListener("click", (event) => {
 
           // Retrieval.getWeather fetches the weather data for the selected location and returns a promise
           Retrieval.getWeather(selected).then((weatherData) => {
-            console.log(weatherData);
             EltCreator.createWeatherDisp(weatherData, selected);
           });
         });
