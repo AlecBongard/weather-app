@@ -32,7 +32,16 @@ p {
   overflow: hidden;
 }
 
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
 .bg-img {
+  transition: opacity 1s linear;
   max-width: 100%;
   height: auto;
   position: absolute;
@@ -55,7 +64,7 @@ p {
   background-color: #ffffff22;
   border-radius: 10px;
   padding: 10px;
-  backdrop-filter: blur(10px) invert(15%);
+  backdrop-filter: blur(8px) invert(15%);
 }
 
 .location-list {
@@ -212,4 +221,18 @@ form {
 
 #submit:hover {
   background-color: #ff6d57;
+}
+
+.attribution {
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  right: 2px;
+  bottom: 0px;
+  backdrop-filter: blur(10px) invert(15%);
+  padding: 3px;
+}
+
+.attribution a {
+  color: white;
 }

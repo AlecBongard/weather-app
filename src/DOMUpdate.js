@@ -1,5 +1,102 @@
 /* eslint-disable no-underscore-dangle */
+import clear from "./imgs/cate-bligh-lX5wMeZUidA-unsplash.jpg";
+import rain from "./imgs/osman-rana-GXEZuWo5m4I-unsplash.jpg";
+import haze from "./imgs/damon-lam-M6PJrAd26M0-unsplash.jpg";
+import thunderstorm from "./imgs/cooper-baumgartner-1N8iqSsn7ls-unsplash.jpg";
+import snow from "./imgs/ant-rozetsky-H9m6mfeeakU-unsplash.jpg";
+import clouds from "./imgs/chaz-mcgregor-GKN6rpDr0EI-unsplash.jpg";
+
 const content = document.querySelector(".content");
+const attribution = document.querySelector(".attribution");
+
+const photoFuncs = (function photoFuncs() {
+  function _makeAttribution(name, profile, img) {
+    const profLink = document.createElement("a");
+    profLink.href = profile;
+    profLink.textContent = name;
+
+    const imgLink = document.createElement("a");
+    imgLink.href = img;
+    imgLink.textContent = "Unsplash";
+
+    const onText = document.createElement("span");
+    onText.textContent = " on ";
+
+    attribution.textContent = "Photo by ";
+    attribution.appendChild(profLink);
+    attribution.appendChild(onText);
+    attribution.appendChild(imgLink);
+  }
+
+  function bgChange(pic) {
+    const oldbg = document.querySelector("img.visible");
+    const newbg = document.querySelector("img.hidden");
+    newbg.src = pic;
+
+    oldbg.classList.add("hidden");
+    oldbg.classList.remove("visible");
+
+    newbg.classList.add("visible");
+    newbg.classList.remove("hidden");
+  }
+
+  // Guide to weather conditions by id: https://openweathermap.org/weather-conditions
+  function choosePhoto(id) {
+    if (id >= 200 && id <= 232) {
+      // Thunderstorm
+      bgChange(thunderstorm);
+      _makeAttribution(
+        "Cooper Baumgartner",
+        "https://unsplash.com/@cooper_baumgartner",
+        "https://unsplash.com/photos/1N8iqSsn7ls"
+      );
+    } else if (id >= 300 && id <= 531) {
+      // Drizzle and rain
+      bgChange(rain);
+      _makeAttribution(
+        "Osman Rana",
+        "https://unsplash.com/@osmanrana",
+        "https://unsplash.com/photos/GXEZuWo5m4I"
+      );
+    } else if (id >= 600 && id <= 622) {
+      // Snow
+      bgChange(snow);
+      _makeAttribution(
+        "Ant Rozetsky",
+        "https://unsplash.com/@rozetsky",
+        "https://unsplash.com/photos/H9m6mfeeakU"
+      );
+    } else if (id >= 701 && id <= 781) {
+      // Haze
+      bgChange(haze);
+      _makeAttribution(
+        "Damon Lam",
+        "https://unsplash.com/@dayday95",
+        "https://unsplash.com/photos/M6PJrAd26M0"
+      );
+    } else if (id === 800) {
+      // Clear
+      bgChange(clear);
+      _makeAttribution(
+        "Cate Bligh",
+        "https://unsplash.com/@catebligh",
+        "https://unsplash.com/photos/lX5wMeZUidA"
+      );
+    } else if (id >= 801 && id <= 804) {
+      bgChange(clouds);
+      _makeAttribution(
+        "Chaz McGregor",
+        "https://unsplash.com/@chazmcgregor",
+        "https://unsplash.com/photos/GKN6rpDr0EI"
+      );
+    }
+  }
+
+  return {
+    bgChange,
+    choosePhoto,
+  };
+})();
 
 const EltCreator = (function EltCreator() {
   // create location menu item
@@ -149,6 +246,8 @@ const EltCreator = (function EltCreator() {
     weatherWrap.appendChild(mainWrap);
     weatherWrap.appendChild(descWrap);
     weatherWrap.appendChild(otherInfo);
+
+    photoFuncs.choosePhoto(weather.id);
   }
 
   function displayError(errorText) {
