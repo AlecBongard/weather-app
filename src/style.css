@@ -107,6 +107,7 @@ p {
   border-radius: 10px;
   padding: 10px;
   backdrop-filter: blur(8px) invert(15%);
+  -webkit-backdrop-filter: blur(10px) invert(15%);
 }
 
 .location-list {
@@ -285,6 +286,7 @@ form {
   right: 2px;
   bottom: 0px;
   backdrop-filter: blur(10px) invert(15%);
+  -webkit-backdrop-filter: blur(10px) invert(15%);
   padding: 3px;
 }
 
