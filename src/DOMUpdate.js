@@ -147,14 +147,14 @@ const EltCreator = (function EltCreator() {
     locationList.classList.add("location-list");
     content.style.visibility = "visible";
 
+    content.appendChild(locationList);
+
     locations.forEach((location) => {
       const index = locations.indexOf(location);
 
       const locationItem = _makeOption(location, index);
       locationList.appendChild(locationItem);
     });
-
-    content.appendChild(locationList);
   }
 
   function createWeatherDisp(weatherLoc, searchLoc) {
@@ -251,7 +251,15 @@ const EltCreator = (function EltCreator() {
   }
 
   function displayError(errorText) {
-    content.textContent = errorText;
+    const errorP = document.createElement("p");
+    const errorWrap = document.createElement("div");
+    errorWrap.classList.add("error-wrap");
+    errorP.classList.add("error-text");
+
+    errorP.textContent = errorText;
+
+    content.appendChild(errorWrap);
+    errorWrap.appendChild(errorP);
     content.style.visibility = "visible";
   }
 

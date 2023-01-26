@@ -5,6 +5,47 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: Roboto;
+  src: url("./fonts/Roboto/Roboto-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("./fonts/Roboto/Roboto-LightItalic.ttf");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("./fonts/Roboto/Roboto-Light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("./fonts/Roboto/Roboto-Bold.ttf");
+  font-weight: 700;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.page-title {
+  font-size: 36px;
+  color: white;
+  align-self: flex-start;
+  padding: 0 0 0 15px;
+}
+
 button {
   border: none;
   display: inline-block;
@@ -42,6 +83,7 @@ p {
 
 .bg-img {
   transition: opacity 1s linear;
+  min-height: 100vh;
   max-width: 100%;
   height: auto;
   position: absolute;
@@ -74,6 +116,7 @@ p {
 }
 
 .location-container {
+  animation: fadeIn 1s;
   margin: 8px;
   padding: 8px;
   border-radius: 5px;
@@ -119,6 +162,7 @@ p {
 }
 
 .location-container {
+  padding-bottom: 13px;
   height: 36px;
   display: grid;
   justify-items: stretch;
@@ -129,8 +173,16 @@ p {
 }
 
 .weather-title {
-  font-weight: bold;
   font-size: 28px;
+  margin-left: 10px;
+  margin: 0 0 10px 10px;
+}
+
+.other-info {
+  font-weight: 300;
+  height: min-content;
+  border-left: 3px solid rgba(255, 255, 255, 0.4);
+  padding-left: 7px;
 }
 
 .desc-wrap {
@@ -161,20 +213,23 @@ p {
 }
 
 .main-wrap {
+  font-weight: 300;
   grid-area: main-wrap;
   display: flex;
   flex-direction: column;
   width: max-content;
   justify-content: center;
   font-size: 16px;
+  padding-left: 10px;
 }
 
 .temp {
   grid-area: temp;
-  font-size: 52px;
+  margin-left: 8px;
+  font-size: 64px;
   align-self: center;
   justify-self: start;
-  padding-left: 25px;
+  font-weight: 700;
 }
 
 .min-temp {
@@ -235,4 +290,16 @@ form {
 
 .attribution a {
   color: white;
+}
+
+.error-text {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.error-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
