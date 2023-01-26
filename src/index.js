@@ -1,10 +1,14 @@
 import "./style.css";
 import Retrieval from "./retrieve";
 import EltCreator from "./DOMUpdate";
+import sun from "./imgs/cate-bligh-lX5wMeZUidA-unsplash.jpg";
 
 const search = document.querySelector("#search");
 const submitBtn = document.querySelector("#submit");
 const content = document.querySelector(".content");
+const indexbg = document.querySelector("img.visible");
+
+indexbg.src = sun;
 
 submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
