@@ -10,7 +10,7 @@ const Retrieval = (function Retrieval() {
     const countryCode = _makePluses(country);
 
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${local},${stateCode},${countryCode}&limit=5&appid=aa3bdc99b7b7ee6fdc385d21b7b3fe99`,
+      `https://api.openweathermap.org/geo/1.0/direct?q=${local},${stateCode},${countryCode}&limit=5&appid=aa3bdc99b7b7ee6fdc385d21b7b3fe99`,
       {
         mode: "cors",
       }
