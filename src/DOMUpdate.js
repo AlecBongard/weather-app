@@ -184,7 +184,7 @@ const EltCreator = (function EltCreator() {
 
     const icon = document.createElement("img");
     icon.classList.add("weather-icon");
-    icon.src = `http://openweathermap.org/img/wn/${weather.icon}@2x.png`;
+    icon.src = `https://openweathermap.org/img/wn/${weather.icon}@2x.png`;
 
     const descMain = document.createElement("p");
     descMain.classList.add("desc-main");
